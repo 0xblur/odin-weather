@@ -52,9 +52,22 @@ async function getCurrentData(location) {
 	const url = `${BASE_URL}/current.json?key=${API_KEY}&q=${location}`;
 	try {
 		const response = await fetch(url);
-		const data = await response.json();
-		return data;
+		if (!response.ok) {
+			const data = await response.json();
+			const errorMsg = data.error.message;
+			const errorCode = data.error.code;
+			handleError(errorMsg, errorCode);
+			throw new Error(errorMsg);
+		} else if (response.ok) {
+			const data = await response.json();
+			return data;
+		}
 	} catch (err) {
 		console.log(err);
 	}
+
+	function handleError(errorMsg, errorCode) {
+		alert(`${errorCode}: ${errorMsg}`);
+	}
 }
+
