@@ -1,3 +1,4 @@
+// CONSTANTS
 const BASE_URL = "http://api.weatherapi.com/v1";
 const API_KEY = "59850b33857f4989ac2210258240602";
 
