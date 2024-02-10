@@ -38,6 +38,7 @@ label[for="searchbox"] {
 
 #searchbox {
   min-width: 200px;
+  padding: 1rem 1.5rem;
   margin: 0 auto;
 }
 
