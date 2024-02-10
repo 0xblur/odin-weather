@@ -11,10 +11,15 @@ searchBox.addEventListener("keyup", (e) => {
 });
 
 function renderWeather(location) {
-	getCurrentLocation(location).then(renderLocation);
-	getCurrentTemp(location).then(renderTemp);
-	getCurrentHumidity(location).then(renderHumidity);
+	getCurrentData(location).then(render);
+
+	function render(data) {
+		renderLocation(data.location);
+		renderTemp(data.current.temp_c);
+		renderHumidity(data.current.humidity);
+	}
 }
+
 function renderLocation(location) {
 	const city = document.querySelector("#city");
 	const country = document.querySelector("#country");
@@ -41,19 +46,4 @@ async function getCurrentData(location) {
 	} catch (err) {
 		console.log(err);
 	}
-}
-
-async function getCurrentLocation(location) {
-	const data = await getCurrentData(location);
-	return data.location;
-}
-
-async function getCurrentTemp(location) {
-	const data = await getCurrentData(location);
-	return data.current.temp_c;
-}
-
-async function getCurrentHumidity(location) {
-	const data = await getCurrentData(location);
-	return data.current.humidity;
 }
