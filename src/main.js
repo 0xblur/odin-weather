@@ -37,6 +37,10 @@ function renderHumidity(humidity) {
 }
 
 // API Stuff
+/**
+ * Get `data` object from API
+ * @param {string} location
+ */
 async function getCurrentData(location) {
 	const url = `${BASE_URL}/current.json?key=${API_KEY}&q=${location}`;
 	try {
