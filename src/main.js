@@ -71,3 +71,5 @@ async function getCurrentData(location) {
 	}
 }
 
+// Init
+renderWeather("Santiago");
