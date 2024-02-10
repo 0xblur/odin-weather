@@ -18,6 +18,7 @@ function renderWeather(location) {
 		renderLocation(data.location);
 		renderTemp(data.current.temp_c);
 		renderHumidity(data.current.humidity);
+		renderWind(data.current.wind_kph);
 	}
 }
 
@@ -35,6 +36,11 @@ function renderTemp(temp) {
 function renderHumidity(humidity) {
 	const currentHumidity = document.querySelector("#current-humidity");
 	currentHumidity.innerHTML = humidity;
+}
+
+function renderWind(wind) {
+	const currentWind = document.querySelector("#current-wind");
+	currentWind.innerHTML = wind;
 }
 
 // API Stuff
